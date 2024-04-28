@@ -2,6 +2,7 @@
 
 use App\Events\MessageSend;
 // MessageSend
+use Livewire\Attributes\On;
 use Livewire\Volt\Component;
 
 new class extends Component
@@ -18,11 +19,11 @@ new class extends Component
 
         $this->reset('message');
     }
-    
+
     #[On('echo:messages,MessageSend')]
-    public function onMessageSent($event)
+    public function onMessageSend($event)
     {
-        dd($event);
+        $this->messages[] = $event;
     }
 }
 ?>
